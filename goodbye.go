@@ -9,7 +9,7 @@ type Goodbye struct {
 	// The SSRC/CSRC identifiers that are no longer active
 	Sources []uint32
 	// Optional text indicating the reason for leaving, e.g., "camera malfunction" or "RTP loop detected"
-	Reason string
+	Reason string `json:"GoodbyeReason"`
 }
 
 var _ Packet = (*Goodbye)(nil) // assert is a Packet
