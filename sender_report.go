@@ -8,7 +8,7 @@ import (
 // A SenderReport (SR) packet provides reception quality feedback for an RTP stream
 type SenderReport struct {
 	// The synchronization source identifier for the originator of this SR packet.
-	SSRC uint32 `json:"SenderSSRC"`
+	SSRC uint32 `json:"SRSSRC"`
 	// The wallclock time when this report was sent so that it may be used in
 	// combination with timestamps returned in reception reports from other
 	// receivers to measure round-trip propagation to those receivers.

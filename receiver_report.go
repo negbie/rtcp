@@ -8,7 +8,7 @@ import (
 // A ReceiverReport (RR) packet provides reception quality feedback for an RTP stream
 type ReceiverReport struct {
 	// The synchronization source identifier for the originator of this RR packet.
-	SSRC uint32 `json:"ReceiverSSRC"`
+	SSRC uint32 `json:"RRSSRC"`
 	// Zero or more reception report blocks depending on the number of other
 	// sources heard by this sender since the last report. Each reception report
 	// block conveys statistics on the reception of RTP packets from a
