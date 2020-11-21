@@ -58,7 +58,7 @@ const (
 
 // A SourceDescription (SDES) packet describes the sources in an RTP stream.
 type SourceDescription struct {
-	Chunks []SourceDescriptionChunk
+	Chunks []SourceDescriptionChunk `json:"SourceDescriptions"`
 }
 
 var _ Packet = (*SourceDescription)(nil) // assert is a Packet

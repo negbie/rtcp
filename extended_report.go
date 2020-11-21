@@ -104,12 +104,17 @@ func (xr *ExtendedReport) Unmarshal(rawPacket []byte) error {
 
 	xr.SSRC = binary.BigEndian.Uint32(rawPacket[xrSSRCOffset:])
 
-	if len(rawPacket[xrReportOffset:]) != 36 || rawPacket[xrReportOffset] != 7 {
+	if len(rawPacket[xrReportOffset:]) != 36 {
 		return errPacketTooShort
 	}
 
 	xr.Report = new(VoIPMetricsReportBlock)
 	xr.Report.BlockType = rawPacket[xrReportOffset]
+
+	if xr.Report.BlockType != 7 {
+		return nil
+	}
+
 	/*Reserved*/
 	xr.Report.BlockLength = binary.BigEndian.Uint16(rawPacket[xrReportOffset+2:])
 	xr.Report.SSRC = binary.BigEndian.Uint32(rawPacket[xrReportOffset+4:])
@@ -139,11 +144,11 @@ func (xr *ExtendedReport) Unmarshal(rawPacket []byte) error {
 }
 
 // Marshal encodes the ExtendedReport in binary
-func (r ExtendedReport) Marshal() ([]byte, error) {
+func (xr ExtendedReport) Marshal() ([]byte, error) {
 	return nil, nil
 }
 
 // DestinationSSRC returns an array of SSRC values that this packet refers to.
-func (r *ExtendedReport) DestinationSSRC() []uint32 {
+func (xr *ExtendedReport) DestinationSSRC() []uint32 {
 	return nil
 }
