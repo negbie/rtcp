@@ -7,10 +7,10 @@ import (
 // A ExtendedReport (XR) packet provides extended quality feedback for an RTP stream
 type ExtendedReport struct {
 	// The synchronization source identifier for the originator of this XR packet.
-	SSRC uint32
+	SSRC uint32 `json:"ExtendedSSRC"`
 	// The VoIP Metrics Report Block provides metrics for monitoring voice
 	// over IP (VoIP) calls.
-	Report *VoIPMetricsReportBlock
+	Report *VoIPMetricsReportBlock `json:"ExtendedReports"`
 }
 
 type VoIPMetricsReportBlock struct {
